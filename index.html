@@ -20,37 +20,61 @@
     <script src="assets/javascript/game.js"></script>
 </head>
 <body>
+    <!-- Bootstrap container -->
     <div class="container">
+
+        <!-- Header Row -->
         <div class="row">
             <div class="col-12">
                 <img src="" alt="">
             </div>
         </div>
+
+        <!-- Game Content Row -->
         <div class="row">
+
+            <!-- Spacing column -->
             <div class="col-3"></div>
-            <div class="col-3">
+
+            <!-- Column containing image displayed after game is finished -->
+            <div class="col-3 border">
                 <div class="mx-auto my-3" id="image"></div>
             </div>
-            <div class="col-3">
+
+            <!-- Column containing game -->
+            <div class="col-3 border">
+                <!-- Instructions -->
                 <p>
                     Press any key to get started!
                 </p>
+
+                <!-- Display wins in the span -->
                 <p>
                     Wins
                 </p>
                 <span id="wins"></span>
+
+                <!-- Display current word being guessed in the span -->
                 <p>
                     Current word
                 </p>
                 <span id="current-word"></span>
+
+                <!-- Display number of guesses left in the span -->
                 <p>
                     Number of Guesses Remaining
                 </p>
+                <span id="guesses-remaining"></span>
+
+                <!-- Display letters guessed in the span -->
                 <p>
                     Letters Already Guessed
                 </p>
                 <span id="letters-guessed"></span>
+
             </div>
+
+            <!-- Spacing column -->
             <div class="col-3"></div>
         </div>
     </div>
