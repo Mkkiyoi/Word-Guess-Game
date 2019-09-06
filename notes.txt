@@ -1,0 +1,28 @@
+Game Design
+
+Goal: user guesses a word by playing Hangman. 
+      Given a certain amount of guesses, user presses letter keys until they guess the word or lose.
+      After game finishes update score and image. 
+      Clear letters that have been guessed.
+      Clear word and get new word to guess.
+
+Game object:
+
+Attributes:
+- Array of letters
+- Guesses left
+- Array of words
+- Word chosen
+- Letters guessed
+- Wins
+- Images
+
+Methods:
+- Guess: on user key press
+         update blank spaces if needed
+         decrement guesses
+         add letter to letters guessed 
+
+- Update word guess: updates the black spaces with letters guessed if needed
+
+- Update letters guessed: updates the span with the new letter guessed.

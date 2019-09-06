@@ -2,4 +2,9 @@
     /* Typography */
     text-align: center;
     font-family: 'Roboto', sans-serif;
+
+}
+
+p {
+    margin: 20px auto;
 }
