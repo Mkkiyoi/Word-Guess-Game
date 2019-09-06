@@ -4,37 +4,48 @@
     var MAX_GUESSES = 12;
 
     var game = {
-        letters: ['a','b','c','d','e','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+        letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
         guessesLeft: MAX_GUESSES,
         words: ['apple', 'banana', 'orange', 'strawberry', 'blueberry', 'blackberry', 'grapes'],
         previousWords: [],
-        wordChosen = '',
-        currentWord = [],
+        wordChosen: '',
+        currentWord: [],
         lettersGuessed: [],
         wins: 0,
         images: [],
 
         resetGame: function() {
+            // Reset variables
+            this.guessesLeft = MAX_GUESSES;
             this.wordChosen = this.words[Math.floor(Math.random() * this.words.length)];
-            this.wordChosen.forEach(function() {
+            this.currentWord = [];
+            this.lettersGuessed = [];
+
+            for (var i = 0; i < this.wordChosen.length; i++) {
                 this.currentWord.push('-');
-            });
-            lettersGuessed = [];
+            }
             document.getElementById('letters-guessed').innerHTML = '';
+            this.updateGuessesRemaining(MAX_GUESSES);
+            this.displayWordGuess();
         },
 
         guess: function(event) {
-            var letter = event.keyCode;
-            if (!this.letters.includes(letter)) {
+            var letter = event.key;
+            if (this.letters.includes(letter) && !this.lettersGuessed.includes(letter)) {
                 this.updateLettersGuessed(letter);
                 if (this.wordChosen.includes(letter)) {
-                    this.updateWordGuess
+                    this.updateWordGuess(letter);
                 }
                 this.guessesLeft -= 1;
+                this.updateGuessesRemaining(this.guessesLeft);
             }
             if (this.isGameOver()) {
                 this.resetGame();
             }
+        },
+
+        updateGuessesRemaining: function(guesses) {
+            document.getElementById('guesses-remaining').innerHTML = guesses;
         },
 
         updateWordGuess: function(letter) {
@@ -44,11 +55,16 @@
                     this.currentWord[i] = letter;
                 }
             }
+            this.displayWordGuess();
+        },
+
+        displayWordGuess: function () {
+            var length = this.wordChosen.length;
             var result = '';
             for (var i = 0; i < (length - 1); i++) {
-                result + this.currentWord[i] + ' ';
+                result = result + this.currentWord[i] + ' ';
             }
-            result = result + this.lettersGuessed[length - 1];
+            result = result + this.currentWord[length - 1];
             document.getElementById('current-word').innerHTML = result;
         },
 
@@ -63,7 +79,7 @@
             } else {
                 var result = '';
                 for (var i = 0; i < (length - 1); i++) {
-                    result + this.lettersGuessed[i] + ', ';
+                    result = result + this.lettersGuessed[i] + ', ';
                 }
                 result = result + this.lettersGuessed[length - 1];
                 lettersGuessedContainer.innerHTML = result;
@@ -90,7 +106,10 @@
         }
     }
 
-    document.onload( function() {
-
-    });
+    window.onload = function() {
+        game.resetGame();
+        document.onkeyup = function(event) {
+            game.guess(event);
+        }
+    };
 })();
