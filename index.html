@@ -32,28 +32,22 @@
 </head>
 <body>
     <!-- Bootstrap container -->
-    <div class="container">
+    <div class="container mt-3">
 
         <!-- Header Row -->
         <div class="row">
-            <div class="col-12">
-                <img src="" alt="">
-            </div>
         </div>
 
         <!-- Game Content Row -->
         <div class="row">
 
-            <!-- Spacing column -->
-            <div class="col-3"></div>
-
             <!-- Column containing image displayed after game is finished -->
-            <div class="col-3 border">
+            <div class="col-7 border">
                 <div class="mx-auto my-3" id="image"></div>
             </div>
 
             <!-- Column containing game -->
-            <div id="game-content" class="col-3 border pb-3">
+            <div id="game-content" class="col-5 border pb-3">
                 <!-- Instructions -->
                 <p class="alert alert-info" role="alert">
                     Press any key to get started!
@@ -68,7 +62,7 @@
                 <!-- Display current word being guessed in the span -->
                 <p class="alert alert-info" role="alert">
                     Current word
-                </p class="alert alert-info" role="alert">
+                </p>
                 <span id="current-word"></span>
 
                 <!-- Display number of guesses left in the span -->
@@ -85,8 +79,6 @@
 
             </div>
 
-            <!-- Spacing column -->
-            <div class="col-3"></div>
         </div>
     </div>
 </body>

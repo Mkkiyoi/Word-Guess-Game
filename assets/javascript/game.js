@@ -37,7 +37,7 @@
 
         // Array contains the images associated with the words being guessed.
         // Used to display images at the end of each game.
-        images: [],
+        images: ['apple.jpg', 'banana.jpg', 'orange.jpg', 'strawberry.jpg', 'blueberry.jpg', 'blackberry.jpg', 'grapes.jpg'],
 
         /* ------------------ Game Object Methods ------------------ */
 
@@ -180,6 +180,13 @@
                     console.log('Winner');
                     this.wins += 1;
                     document.getElementById('wins').innerHTML = this.wins;
+                    var imageContainer = document.getElementById('image');
+                    imageContainer.innerHTML = '';
+                    var gameImage = document.createElement('img');
+                    gameImage.setAttribute('src', 'assets/images/' + this.images[this.words.indexOf(word)]);
+                    gameImage.setAttribute('class', 'img-responsive');
+                    document.getElementById('image').appendChild(gameImage);
+                    imageContainer.appendChild(gameImage);
                     return true;
                 }
             }

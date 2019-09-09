@@ -1,10 +1,26 @@
+body {
+    background-image: url('../images/background.png')
+}
+
+.container {
+    background: white;
+}
+
 #game-content {
     /* Typography */
     text-align: center;
     font-family: 'Roboto', sans-serif;
-
 }
 
 p {
+    /* Box Model */
     margin: 20px auto;
+}
+
+img {
+    /* Visual */
+    display: block;
+
+    /* Box Model */
+    margin: 0 auto;
 }
