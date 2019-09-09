@@ -5,7 +5,7 @@
     // Global variable containing the maximum number of guesses allowed in each game.
     var MAX_GUESSES = 12;
 
-    // Game object. Contains various properties and game logic to run the word guess game.
+    // Game object. Runs a word guessing game (hangman).
     var game = {
 
         /* ------------------ Game Object Properties ------------------ */
@@ -112,9 +112,9 @@
         },
 
         /* 
-            Updates the array containing the letters that were guessed correctly and
-            letters yet to be guessed. 
-        */
+         *  Updates the array containing the letters that were guessed correctly and
+         *  letters yet to be guessed. 
+         */
         updateWordGuess: function(letter) {
             
             // Get length of the chosen word. 
@@ -138,6 +138,7 @@
 
         },
 
+        // 
         displayWordGuess: function () {
             var length = this.wordChosen.length;
             var result = '';
