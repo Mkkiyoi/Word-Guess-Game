@@ -1,8 +1,10 @@
 body {
+    /* Visual */
     background-image: url('../images/background.png')
 }
 
 .container {
+    /* Visual */
     background: white;
 }
 

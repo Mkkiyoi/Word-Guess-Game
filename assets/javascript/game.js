@@ -70,7 +70,7 @@
         guess: function(event) {
 
             // Get the key that was pressed.
-            var letter = event.key;
+            var letter = event.key.toLowerCase();
 
             // Check if the key pressed is a letter and if it was guessed yet.
             if (this.letters.includes(letter) && !this.lettersGuessed.includes(letter)) {
@@ -138,65 +138,105 @@
 
         },
 
-        // 
+        /* 
+         * Displays the current guess for the word.
+         * Letters are either displayed as the correct letter or as '-'
+         */ 
         displayWordGuess: function () {
-            var length = this.wordChosen.length;
-            var result = '';
-            for (var i = 0; i < (length - 1); i++) {
-                result = result + this.currentWord[i] + ' ';
-            }
-            result = result + this.currentWord[length - 1];
-            document.getElementById('current-word').innerHTML = result;
+            
+            // Joins together all of the elements of the currentWord array separated by spaces.
+            // Then sets the text content of the current-word div.
+            document.getElementById('current-word').textContent = this.currentWord.join(' ');;
         },
 
+        /* Updates the current letters that have been guessed and displays those letters. */
         updateLettersGuessed: function(letter) {
+            
+            // Add the guessed letter to the current letters guessed
             this.lettersGuessed.push(letter);
 
+            // Get the span to display the letters
             var lettersGuessedContainer = document.getElementById('letters-guessed');
+
+            // Get the length of the lettersGuessed array
             var length = this.lettersGuessed.length;
             
+            // If there is only one letter display only that letter.
+            // Otherwise display letters separated by a comma and space.
             if (length === 1) {
-                lettersGuessedContainer.innerHTML = letter;
+                lettersGuessedContainer.textContent = letter;
             } else {
-                var result = '';
-                for (var i = 0; i < (length - 1); i++) {
-                    result = result + this.lettersGuessed[i] + ', ';
-                }
-                result = result + this.lettersGuessed[length - 1];
-                lettersGuessedContainer.innerHTML = result;
+                lettersGuessedContainer.textContent = this.lettersGuessed.join(', ');
             }
         },
 
+        /* Checks the state of the game:
+         * - If there are 0 guesses left, the player has lost and the game is over.
+         * - If the word has been completely guessed the game is over.
+         */
         isGameOver: function() {
+            // Check if there are 0 guesses left.
             if (this.guessesLeft === 0) {
-                console.log('Game over')
+                // Log the game is over.
+                console.log('Game over');
+
+                // Return boolean flag true (indicates the game is over.)
                 return true;
+
             } else {
-                var word = '';
-                this.currentWord.forEach(function (letter) {
-                    word = word + letter;
-                });
+
+                // Join the letters in the current guess to get the word.
+                var word = this.currentWord.join('');
+
+                // Check if the guessed word is the same as the chosen word.
                 if (this.wordChosen === word) {
+
+                    // Log that the player is the winner.
                     console.log('Winner');
+
+                    // Increment wins by 1
                     this.wins += 1;
+
+                    // Display the current number of wins.
                     document.getElementById('wins').innerHTML = this.wins;
+
+                    // Get the image container
                     var imageContainer = document.getElementById('image');
+
+                    // Reset the current picture.
                     imageContainer.innerHTML = '';
+
+                    // Create a new image element
                     var gameImage = document.createElement('img');
+
+                    // Set the image to be the corresponding image to the chosen word in images array
                     gameImage.setAttribute('src', 'assets/images/' + this.images[this.words.indexOf(word)]);
+                    
+                    // Give the image the Bootstrap responsive image class
                     gameImage.setAttribute('class', 'img-responsive');
-                    document.getElementById('image').appendChild(gameImage);
+
+                    // Append the image to the image container.
                     imageContainer.appendChild(gameImage);
+
+                    // Return boolean flag true (indicates the game is over.)
                     return true;
                 }
             }
+            // Since the game is not over, return boolean flag false.
             return false;
         }
     }
 
+    // Run Javascript code only after the window has fully loaded.
     window.onload = function() {
+
+        // Create a new game.
         game.resetGame();
+        
+        // Listen for user key press.
         document.onkeyup = function(event) {
+            
+            // After user key press, make a guess with the key that was pressed.
             game.guess(event);
         }
     };
