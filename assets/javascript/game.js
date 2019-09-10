@@ -8,7 +8,9 @@
     // Game object. Runs a word guessing game (hangman).
     var game = {
 
+        
         /* ------------------ Game Object Properties ------------------ */
+
 
         // Array containing all letters of the English alphabet
         letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
@@ -39,7 +41,9 @@
         // Used to display images at the end of each game.
         images: ['apple.jpg', 'banana.jpg', 'orange.jpg', 'strawberry.jpg', 'blueberry.jpg', 'blackberry.jpg', 'grapes.jpg'],
 
+        
         /* ------------------ Game Object Methods ------------------ */
+
 
         /* Resets the necessary html content and game properties to begin a new game. */
         resetGame: function() {
@@ -227,7 +231,7 @@
         }
     }
 
-    // Run Javascript code only after the window has fully loaded.
+    /* Run Javascript code only after the window has fully loaded. */
     window.onload = function() {
 
         // Create a new game.
