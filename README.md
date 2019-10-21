@@ -2,6 +2,9 @@
 
 A repository for a version of the Hangman word guessing game.
 
+### Live Version of the Site
+* [Word Guess Game](https://mkkiyoi.github.io/Word-Guess-Game)
+
 ### Assets
 
 * All assets can be found [here](assets)
